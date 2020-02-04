@@ -47,8 +47,8 @@ import           Data.Traversable
 import           Data.Typeable
                  (Typeable)
 import           Dhall
-                 (Inject, InputType (..), Interpret,
-                 InterpretOptions, Type (..), autoWith,
+                 (Inject, Encoder (..), Interpret,
+                 InterpretOptions, Decoder (..), autoWith,
                  defaultInterpretOptions, injectWith)
 import qualified Dhall.Core
 import           Dhall.Parser
@@ -78,7 +78,7 @@ instance (Inject a, HasInterpretOptions opts) => MimeRender (DHALL' opts) a wher
         $ pretty
         $ embed ty x
       where
-        ty :: InputType a
+        ty :: Encoder a
         ty = injectWith (interpretOptions (Proxy :: Proxy opts))
 
 -------------------------------------------------------------------------------
@@ -103,7 +103,7 @@ instance (Interpret a, HasInterpretOptions opts) => MimeUnrender (DHALL' opts) a
         te = TL.toStrict $
             TLE.decodeUtf8With lenientDecode lbs
 
-        ty :: Type a
+        ty :: Decoder a
         ty = autoWith (interpretOptions (Proxy :: Proxy opts))
 
         ppExpr :: Pretty pp => pp -> String

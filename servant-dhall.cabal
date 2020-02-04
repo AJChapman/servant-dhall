@@ -34,11 +34,11 @@ library
       base           >=4.9      && <4.13
     , base-compat    >=0.10.1   && <0.12
     , bytestring     >=0.10.4.0 && <0.11
-    , dhall          >=1.27.0   && <1.28
+    , dhall          >=1.28.0   && <1.30
     , either         >=5.0.1.1  && <5.1
     , http-media     >=0.7.1.2  && <0.9
     , megaparsec     >=7.0.4    && <7.1
-    , prettyprinter  >=1.2.0.1  && <1.4
+    , prettyprinter  >=1.2.0.1  && <1.6
     , servant        >=0.16     && <0.17
     , text           >=1.2.3.0  && <1.3
 
